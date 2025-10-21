@@ -1,20 +1,45 @@
-self.addEventListener('install', function(event) {
+// Nama cache (ganti versinya kalau update file baru)
+const CACHE_NAME = "aepro-cache-v1";
+
+// Daftar file yang akan disimpan di cache
+const urlsToCache = [
+  "/monitorplts/aeproplts.html",
+  "/monitorplts/manifest.json",
+  "/monitorplts/icon-192.png",
+  "/monitorplts/icon-512.png"
+  // tambahkan file JS, CSS, atau gambar lain kalau perlu
+];
+
+// Proses instalasi service worker
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open('aepro-cache-v1').then(function(cache) {
-      return cache.addAll([
-        '/mmonitorplts/aeproplts.html',
-        '/monitorplts/manifest.json',
-        '/mmonitorplts/icon-192.png',
-        '/monitorplts/icon-512.png'
-        // tambah file lain yang penting (CSS, JS, asset) jika kamu mau
-      ]);
+    caches.open(CACHE_NAME).then(cache => {
+      console.log("Service Worker: caching files");
+      return cache.addAll(urlsToCache);
     })
   );
 });
 
-self.addEventListener('fetch', function(event) {
+// Aktivasi — hapus cache lama kalau ada versi baru
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            console.log("Service Worker: clearing old cache");
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Fetch — ambil dari cache dulu, kalau tidak ada baru dari network
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(function(response) {
+    caches.match(event.request).then(response => {
       return response || fetch(event.request);
     })
   );
