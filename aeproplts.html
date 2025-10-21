@@ -36,6 +36,17 @@
     <!-- SVG.js untuk Diagram -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.0.16/svg.min.js"></script>
     
+    <!-- Memuat SW JS dengan cepat -->
+    <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/monitorplts/sw.js')
+      .then(reg => console.log('✅ SW registered:', reg))
+      .catch(err => console.error('❌ SW failed:', err));
+  });
+}
+</script>
+
     <!-- Konfigurasi Tailwind & Variabel CSS (Digabung) -->
     <script>
         tailwind.config = {
@@ -3605,15 +3616,9 @@
           });
         }
     </script>
-    <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/monitorplts/sw.js")
-    .then(reg => console.log("✅ Service Worker registered:", reg))
-    .catch(err => console.error("❌ Service Worker failed:", err));
-}
-</script>
 </body>
 </html>
+
 
 
 
