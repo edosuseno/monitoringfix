@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEPRO PLTS & BMS</title>
     
-    <!-- PWA METADATA - Dihapus/Dipotong yang tidak relevan.
-         Perbaikan: Menghapus meta tag yang sudah deprecated (apple-mobile-web-app-capable)
-         karena tidak bisa diperbaiki tanpa file manifest/ikon yang hilang. -->
 <link rel="manifest" href="/monitorplts/manifest.json">
 <meta name="theme-color" content="#4B0082">
 
-<!-- iOS / PWA -->
+<!-- iPhone / PWA Support -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="AEProp">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 <link rel="apple-touch-icon" href="/monitorplts/icon-192.png">
 <link rel="icon" href="/monitorplts/icon-192.png" type="image/png">
+
+<!-- Optional: biar icon langsung di-preload -->
+<link rel="preload" as="image" href="/monitorplts/icon-192.png">
+
+<!-- Optional: no-cache untuk realtime -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
 
     
     <!-- MEMUAT SEMUA LIB YANG DIPERLUKAN -->
@@ -3618,6 +3624,7 @@ if ('serviceWorker' in navigator) {
     </script>
 </body>
 </html>
+
 
 
 
