@@ -1,5 +1,5 @@
 {
-  "name": "AEPRO PLTS Monitor",
+  "name": "AEPRO PLTS Monitor"",
   "short_name": "AEPRO PLTS",
   "start_url": "/monitorplts/aeproplts.html",
   "display": "standalone",
@@ -12,7 +12,7 @@
       "type": "image/png"
     },
     {
-      "src": "/monitorplts/icon-512.png",
+      "src": "/monitorplts/icon-192.png",
       "sizes": "512x512",
       "type": "image/png"
     }
