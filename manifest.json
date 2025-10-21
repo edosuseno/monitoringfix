@@ -1,21 +1,20 @@
 {
-  "name": "AEPRO PLTS Monitor",
-  "short_name": "AEPRO PLTS",
-  "start_url": "aeproplts.html",
+  "name": "AE Prop Monitor",
+  "short_name": "AEProp",
+  "start_url": "/monitorplts/aeproplts.html",
   "display": "standalone",
-  "background_color": "#150024",
-  "theme_color": "#150024",
+  "background_color": "#4B0082",
+  "theme_color": "#4B0082",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/monitorplts/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512.png",
+      "src": "/monitorplts/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ]
 }
-
