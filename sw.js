@@ -18,7 +18,7 @@ self.addEventListener("install", event => {
   console.log("🛠 [SW] Installing...");
   event.waitUntil(
     caches.open(CACHE_NAME).then(async cache => {
-      console.log("📦 [SW] Caching assets safely...");
+      console.log("📦 [SW] Safe caching files...");
       for (const url of urlsToCache) {
         try {
           await cache.add(url);
