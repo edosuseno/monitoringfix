@@ -15,14 +15,20 @@ const urlsToCache = [
 
 // Install service worker & cache file
 self.addEventListener("install", event => {
-  console.log("🔧 [SW] Installing...");
+  console.log("🛠 [SW] Installing...");
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log("📦 [SW] Caching files...");
-        return cache.addAll(urlsToCache);
-      })
-      .then(() => self.skipWaiting()) // langsung aktif tanpa tunggu reload
+    caches.open(CACHE_NAME).then(async cache => {
+      console.log("📦 [SW] Caching assets safely...");
+      for (const url of urlsToCache) {
+        try {
+          await cache.add(url);
+          console.log("✅ Cached:", url);
+        } catch (err) {
+          console.warn("⚠️ Failed to cache:", url, err);
+        }
+      }
+      self.skipWaiting();
+    })
   );
 });
 
