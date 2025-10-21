@@ -8,8 +8,17 @@
     <!-- PWA METADATA - Dihapus/Dipotong yang tidak relevan.
          Perbaikan: Menghapus meta tag yang sudah deprecated (apple-mobile-web-app-capable)
          karena tidak bisa diperbaiki tanpa file manifest/ikon yang hilang. -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon-192.png" type="image/png">
+<link rel="manifest" href="/monitorplts/manifest.json">
+<meta name="theme-color" content="#4B0082">
+
+<!-- iOS / PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AEProp">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="apple-touch-icon" href="/monitorplts/icon-192.png">
+<link rel="icon" href="/monitorplts/icon-192.png" type="image/png">
+
     
     <!-- MEMUAT SEMUA LIB YANG DIPERLUKAN -->
     <!-- Tailwind CSS (Umum) -->
@@ -3596,8 +3605,16 @@
           });
         }
     </script>
+    <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/monitorplts/sw.js")
+    .then(reg => console.log("✅ Service Worker registered:", reg))
+    .catch(err => console.error("❌ Service Worker failed:", err));
+}
+</script>
 </body>
 </html>
+
 
 
 
