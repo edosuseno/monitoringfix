@@ -3585,7 +3585,7 @@
           navigator.serviceWorker.getRegistrations().then(function(registrations) {
             for(let registration of registrations) {
               // Jika registrasi ditemukan, batalkan pendaftaran
-              if (registration.scope.includes('/monitoring/')) { 
+              if (registration.scope.includes('/monitorplts/')) { 
                  registration.unregister().then(function(success) {
                     console.log('Unregistered service worker to fix: sw.js error:', success);
                  }).catch(function(error) {
@@ -3598,4 +3598,5 @@
     </script>
 </body>
 </html>
+
 
